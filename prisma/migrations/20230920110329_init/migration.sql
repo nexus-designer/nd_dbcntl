@@ -23,7 +23,7 @@ CREATE TABLE "Conversation" (
 CREATE TABLE "Msg" (
     "conversation_id" BIGINT NOT NULL,
     "index" INTEGER NOT NULL,
-    "from_user" BOOLEAN NOT NULL,
+    "from_bot" BOOLEAN NOT NULL,
     "content" TEXT NOT NULL,
     "media" CHAR(32),
 

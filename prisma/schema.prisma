@@ -32,7 +32,7 @@ model Conversation {
 model Msg {
   conversation_id BigInt
   index           Int
-  from_user       Boolean
+  from_bot        Boolean
   content         String  @db.Text
   media           String? @db.Char(32)
 
