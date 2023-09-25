@@ -7,36 +7,36 @@ datasource db {
   url      = env("DB_CONNECTION_STR")
 }
 
-model User {
+model user {
   id            BigInt  @id @default(autoincrement())
   name          String  @db.VarChar(32)
   email         String
-  pwd_hash      String  @db.Char(60)
-  session_token String? @db.VarChar(32)
+  pwdHash      String  @db.Char(60)
+  sessionToken String? @db.VarChar(32)
 
   // Relations
-  conversations Conversation[]
+  conversations conversation[]
 }
 
-model Conversation {
+model conversation {
   id      BigInt  @id @default(autoincrement())
-  user_id BigInt
+  userId BigInt
   title   String  @db.VarChar(32)
   waiting Boolean
 
   // Relations
-  user User  @relation(fields: [user_id], references: [id])
-  msgs Msg[]
+  user user  @relation(fields: [userId], references: [id])
+  msgs msg[]
 }
 
-model Msg {
+model msg {
   id BigInt @id @default(autoincrement())
-  conversation_id BigInt
+  conversationId BigInt
   index           Int
-  from_bot        Boolean
+  fromBot        Boolean
   content         String  @db.Text
   media           String? @db.Char(32)
 
   // Relations
-  conversation Conversation @relation(fields: [conversation_id], references: [id])
+  conversation conversation @relation(fields: [conversationId], references: [id])
 }

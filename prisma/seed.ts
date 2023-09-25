@@ -6,7 +6,7 @@ async function seed(prisma: PrismaClient) {
 		data: {
 			name: "Tester",
 			email: "test@gmail.com",
-			pwd_hash: hashSync("test", 10),
+			pwdHash: hashSync("test", 10),
 		},
 	});
 }
