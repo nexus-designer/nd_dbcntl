@@ -30,6 +30,7 @@ model Conversation {
 }
 
 model Msg {
+  id BigInt @id @default(autoincrement())
   conversation_id BigInt
   index           Int
   from_bot        Boolean
@@ -38,7 +39,4 @@ model Msg {
 
   // Relations
   conversation Conversation @relation(fields: [conversation_id], references: [id])
-
-  // Contraints
-  @@id([conversation_id, index])
 }
