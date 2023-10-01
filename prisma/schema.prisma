@@ -22,7 +22,7 @@ model conversation {
   id      BigInt  @id @default(autoincrement())
   userId BigInt
   title   String  @db.VarChar(32)
-  waiting Boolean
+  waiting Boolean @default(false)
 
   // Relations
   user user  @relation(fields: [userId], references: [id])
