@@ -8,9 +8,9 @@ datasource db {
 }
 
 model user {
-  id            BigInt  @id @default(autoincrement())
-  name          String  @db.VarChar(32)
-  email         String
+  id           BigInt  @id @default(autoincrement())
+  name         String  @db.VarChar(32)
+  email        String
   pwdHash      String  @db.Char(60)
   sessionToken String? @db.VarChar(32)
 
@@ -19,11 +19,11 @@ model user {
 }
 
 model conversation {
-  id      BigInt  @id @default(autoincrement())
-  userId BigInt
-  title   String  @db.VarChar(32)
-  waiting Boolean @default(false)
-  createdOn DateTime @db.Timestamptz() @default(now())
+  id        BigInt   @id @default(autoincrement())
+  userId    BigInt
+  title     String   @db.VarChar(32)
+  waiting   Boolean  @default(false)
+  createdOn DateTime @default(now()) @db.Timestamptz()
 
   // Relations
   user user  @relation(fields: [userId], references: [id])
@@ -31,12 +31,12 @@ model conversation {
 }
 
 model msg {
-  id BigInt @id @default(autoincrement())
+  id             BigInt  @id @default(autoincrement())
   conversationId BigInt
-  index           Int
+  index          Int
   fromBot        Boolean
-  content         String  @db.Text
-  media           String? @db.Char(32)
+  content        String  @db.Text
+  media          String? @db.Char(32)
 
   // Relations
   conversation conversation @relation(fields: [conversationId], references: [id])
