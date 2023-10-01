@@ -23,6 +23,7 @@ model conversation {
   userId BigInt
   title   String  @db.VarChar(32)
   waiting Boolean @default(false)
+  createdOn DateTime @db.Timestamptz() @default(now())
 
   // Relations
   user user  @relation(fields: [userId], references: [id])
