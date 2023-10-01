@@ -7,7 +7,7 @@
 		"seed": "ts-node ./prisma/seed.ts"
 	},
 	"scripts": {
-		"start": "prisma migrate reset --force --skip-generate",
+		"start": "prisma migrate reset --force",
 		"build": "tsc"
 	},
 	"keywords": [],
